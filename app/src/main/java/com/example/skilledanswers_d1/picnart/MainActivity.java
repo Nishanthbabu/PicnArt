@@ -14,9 +14,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.skilledanswers_d1.picnart.Adapter.CategoryAdapter;
 import com.example.skilledanswers_d1.picnart.Adapter.SlidingAdapter;
@@ -60,6 +62,9 @@ public class MainActivity extends AppCompatActivity
         my_recycler_view.setLayoutManager(layoutManager);
         my_recycler_view.setAdapter(adapter);
         my_recycler_view.setHasFixedSize(true);
+        //////////////////
+
+
         //////////
         appBarLayout=(AppBarLayout)findViewById(R.id.appbar_picnArtID);
         collapsingToolbarLayout=(CollapsingToolbarLayout)findViewById(R.id.collapsableToolbar_picnArtID);
@@ -195,6 +200,9 @@ public class MainActivity extends AppCompatActivity
         String[] rating={"2","5"};
         String[] likes={"10","500"};
         String[] share={"100","200"};
+        String[] specification1={"android","windows"};
+        String[] specification2={"android","windows"};
+        String[] specification3={"android","windows"};
         boolean[] love={false,true};
         for(int i=0;i<categories.length;i++)
         {
@@ -204,7 +212,8 @@ public class MainActivity extends AppCompatActivity
             for(int j=0;j<company.length;j++)
             {
                 singleItemModels.add(new SingleItemModel(pagerImages[j],company[j],
-                        name[j],sellingPrice[j],actualPrice[j],rating[j],likes[j],share[j],love[j],categories[i]));
+                        name[j],sellingPrice[j],actualPrice[j],rating[j],likes[j],share[j],love[j],categories[i]
+                ,specification1[j],specification2[j],specification3[j]));
             }
             categoriesModel.setAllItemsInSection(singleItemModels);
             allSampleData.add(categoriesModel);

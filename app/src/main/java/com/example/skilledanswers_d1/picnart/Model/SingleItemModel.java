@@ -18,8 +18,14 @@ public class SingleItemModel  implements Parcelable{
     private String _shares=null;
     private boolean _love=false;
     private String _cvategory=null;
+    private String _specification1=null;
+    private String _specification2=null;
+    private String _specification3=null;
 
-    public SingleItemModel(int _image, String _company, String _Pname, String _sellingPrice, String _actualPrice, String _rating, String _likes, String _shares, boolean _love, String _cvategory) {
+    public SingleItemModel(int _image, String _company, String _Pname,
+                           String _sellingPrice, String _actualPrice, String _rating, String _likes,
+                           String _shares, boolean _love, String _cvategory,
+                           String _specification1, String _specification2, String _specification3) {
         this._image = _image;
         this._company = _company;
         this._Pname = _Pname;
@@ -30,6 +36,9 @@ public class SingleItemModel  implements Parcelable{
         this._shares = _shares;
         this._love = _love;
         this._cvategory = _cvategory;
+        this._specification1 = _specification1;
+        this._specification2 = _specification2;
+        this._specification3 = _specification3;
     }
 
     protected SingleItemModel(Parcel in) {
@@ -43,6 +52,31 @@ public class SingleItemModel  implements Parcelable{
         _shares = in.readString();
         _love = in.readByte() != 0;
         _cvategory = in.readString();
+        _specification1 = in.readString();
+        _specification2 = in.readString();
+        _specification3 = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(_image);
+        dest.writeString(_company);
+        dest.writeString(_Pname);
+        dest.writeString(_sellingPrice);
+        dest.writeString(_actualPrice);
+        dest.writeString(_rating);
+        dest.writeString(_likes);
+        dest.writeString(_shares);
+        dest.writeByte((byte) (_love ? 1 : 0));
+        dest.writeString(_cvategory);
+        dest.writeString(_specification1);
+        dest.writeString(_specification2);
+        dest.writeString(_specification3);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<SingleItemModel> CREATOR = new Creator<SingleItemModel>() {
@@ -121,7 +155,7 @@ public class SingleItemModel  implements Parcelable{
         this._shares = _shares;
     }
 
-    public boolean is_love() {
+    public boolean get_love() {
         return _love;
     }
 
@@ -137,22 +171,31 @@ public class SingleItemModel  implements Parcelable{
         this._cvategory = _cvategory;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String get_specification1() {
+        return _specification1;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(_image);
-        dest.writeString(_company);
-        dest.writeString(_Pname);
-        dest.writeString(_sellingPrice);
-        dest.writeString(_actualPrice);
-        dest.writeString(_rating);
-        dest.writeString(_likes);
-        dest.writeString(_shares);
-        dest.writeByte((byte) (_love ? 1 : 0));
-        dest.writeString(_cvategory);
+    public void set_specification1(String _specification1) {
+        this._specification1 = _specification1;
+    }
+
+    public String get_specification2() {
+        return _specification2;
+    }
+
+    public void set_specification2(String _specification2) {
+        this._specification2 = _specification2;
+    }
+
+    public String get_specification3() {
+        return _specification3;
+    }
+
+    public void set_specification3(String _specification3) {
+        this._specification3 = _specification3;
+    }
+
+    public static Creator<SingleItemModel> getCREATOR() {
+        return CREATOR;
     }
 }
